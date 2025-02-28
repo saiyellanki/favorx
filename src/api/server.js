@@ -84,10 +84,12 @@ app.get('/health', (req, res) => {
 app.use(errorLogger);
 app.use(handleError);
 
+// Allow all IP addresses in development
+const HOST = process.env.NODE_ENV === 'production' ? 'localhost' : '0.0.0.0';
 const PORT = config.port;
-app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT} in ${config.env} mode`);
-  console.log(`API Documentation available at http://localhost:${PORT}/api-docs`);
+app.listen(PORT, HOST, () => {
+  console.log(`Server running on ${HOST}:${PORT} in ${config.env} mode`);
+  console.log(`API Documentation available at http://${HOST}:${PORT}/api-docs`);
 });
 
 module.exports = app; 

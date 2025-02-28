@@ -20,7 +20,7 @@ module.exports = {
 
   // CORS configuration
   cors: {
-    allowedOrigins: process.env.ALLOWED_ORIGINS?.split(',') || ['http://localhost:3000'],
+    allowedOrigins: process.env.ALLOWED_ORIGINS?.split(',') || ['*'],
     allowedMethods: ['GET', 'POST', 'PUT', 'DELETE'],
     allowedHeaders: ['Content-Type', 'Authorization'],
     exposedHeaders: ['X-RateLimit-Reset'],
